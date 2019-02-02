@@ -57,7 +57,7 @@ instance functionHasTSRep ::
   ( HasTSRep a
   , HasTSRep b
   ) => HasTSRep (Function a b) where
-  toTSRep _ = "(a: " <> a <> ") => " <> b
+  toTSRep _ = "(a: " <> a <> ") => () => " <> b
     where
       a = toTSRep (Proxy :: Proxy a)
       b = toTSRep (Proxy :: Proxy b)
@@ -70,7 +70,7 @@ instance fn2HasTSRep ::
   toTSRep _ =
       "(a: " <> a <>
       ", b: " <> b <>
-      ") => " <> c
+      ") => () => " <> c
     where
       a = toTSRep (Proxy :: Proxy a)
       b = toTSRep (Proxy :: Proxy b)
